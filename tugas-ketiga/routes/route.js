@@ -10,9 +10,9 @@ const {
 } = require("../controllers/controller.js");
 const cacheMiddleware = require("../middlewares/caching.js");
 
-route.get("/", cacheMiddleware, getAll);
+route.get("/",cacheMiddleware, getAll);
 
-route.get("/:nim", getByNim);
+route.get("/:nim",cacheMiddleware ,getByNim);
 
 route.post("/add", post);
 
