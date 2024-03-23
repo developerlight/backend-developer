@@ -8,8 +8,9 @@ const {
   updateByQuery,
   deletByNim,
 } = require("../controllers/controller.js");
+const cacheMiddleware = require("../middlewares/caching.js");
 
-route.get("/", getAll);
+route.get("/", cacheMiddleware, getAll);
 
 route.get("/:nim", getByNim);
 

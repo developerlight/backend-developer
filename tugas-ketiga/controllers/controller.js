@@ -3,10 +3,11 @@ const db = require('../config/conDB.js')
 const getAll = (req, res) => {
   db.query("SELECT * FROM mahasiswa", (err, result) => {
     if (err) {
-      throw err;
+      console.log(err);
+      return res.status(500).send("Internal Server Error");
     }
     if (result.length === 0) {
-      return res.send("Data not found");
+      return res.status(404).send("Data not found");
     }
     res.send(result);
   });
