@@ -8,10 +8,11 @@ const {
     deletByNim
 } = require("../controllers/controllerAsync.js");
 const cacheMiddleware = require("../middlewares/caching.js");
+const checkView = require("../middlewares/checkView.js");
 
-route.get("/get",cacheMiddleware, getData);
+route.get("/get", cacheMiddleware, getData);
 
-route.get("/:nim",cacheMiddleware, getDataByNim);
+route.get("/:nim",cacheMiddleware, checkView, getDataByNim);
 
 route.post("/add", postData);
 
