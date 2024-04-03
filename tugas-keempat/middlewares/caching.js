@@ -1,28 +1,22 @@
-const NodeCache = require('node-cache')
-
-
-// Create a new cache object with a TTL of 10 minutes and a check period of 2 minutes
-const cache = new NodeCache({ stdTTL: 600, checkperiod: 120 })
+const cache = require("../utils/cache");
 
 const cacheMiddleware = (req, res, next) => {
-    const key = req.originalUrl || req.url;
-    const cachedResponse = cache.get(key);
+  const key = req.originalUrl || req.url;
+  console.log(key)
+  const cachedResponse = cache.get(key);
 
-
-if (cachedResponse) {
-    console.log('Cache hit for', key);
+  if (cachedResponse) {
+    console.log("Cache hit for", key);
     return res.send(cachedResponse);
-}
+  }
 
-console.log('Cache miss for', key);
-res.sendResponse = res.send;
-res.send = (body) => {
+  console.log("Cache miss for", key);
+  res.sendResponse = res.send;
+  res.send = (body) => {
     cache.set(key, body);
     res.sendResponse(body);
-}
-next();
-
-}
-
+  };
+  next();
+};
 
 module.exports = cacheMiddleware;

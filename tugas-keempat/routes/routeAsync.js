@@ -12,7 +12,7 @@ const checkView = require("../middlewares/checkView.js");
 
 route.get("/get", cacheMiddleware, getData);
 
-route.get("/:nim",cacheMiddleware, checkView, getDataByNim);
+route.get("/:nim", checkView, getDataByNim);
 
 route.post("/add", postData);
 

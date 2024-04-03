@@ -1,3 +1,4 @@
+const cache = require('../utils/cache.js');
 const { WithParams } = require('../utils/query.js')
 
 const checkView = async (req, res, next) => {
@@ -17,6 +18,10 @@ const checkView = async (req, res, next) => {
         }
 
         const view = result[0].view + 1
+        const value = cache.get('/v2/get')
+        const valueJSON = (value ? JSON.parse(value) : value)
+        cache.set('/v2/get', value ? JSON.stringify(valueJSON?.map((data) => ({...data, view: data.nim == nim ? view : data.view}))) : undefined)
+
         await WithParams(
             'UPDATE mahasiswa SET view = ? WHERE nim = ?',
             [view, nim]
