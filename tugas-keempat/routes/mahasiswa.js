@@ -6,7 +6,7 @@ const {
     getDataByNim,
     putData,
     deletByNim
-} = require("../controllers/controllerAsync.js");
+} = require("../controllers/mahasiswa.js");
 const cacheMiddleware = require("../middlewares/caching.js");
 const checkView = require("../middlewares/checkView.js");
 
