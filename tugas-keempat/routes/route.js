@@ -9,10 +9,8 @@ const {
   deletByNim,
 } = require("../controllers/controller.js");
 const cacheMiddleware = require("../middlewares/caching.js");
-// const { getData } = require("../controllers/controllerAsync.js");
 
 route.get("/",cacheMiddleware, getAll);
-// route.get("/async",cacheMiddleware, getData);
 
 route.get("/:nim",cacheMiddleware ,getByNim);
 
