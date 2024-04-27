@@ -31,10 +31,9 @@ const checkView = async (req, res, next) => {
         : undefined
     );
 
-    await WithParams("UPDATE mahasiswa SET view = ? WHERE nim = ?", [
-      view,
-      nim,
-    ]);
+    await WithParams("UPDATE mahasiswa SET view = ? WHERE nim = ?", 
+      [view, nim]
+    );
 
     next();
   } catch (error) {

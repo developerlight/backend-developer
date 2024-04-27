@@ -10,7 +10,7 @@ const {
 const cacheMiddleware = require("../middlewares/caching.js");
 const checkView = require("../middlewares/checkView.js");
 
-route.get("/get", cacheMiddleware, getData);
+route.get("/get", getData);
 
 route.get("/:nim", checkView, getDataByNim);
 
