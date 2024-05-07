@@ -96,6 +96,10 @@ const deletByNim = (req, res) => {
   });
 };
 
+const getNama = (req, res) => {
+  res.send('Hello nama saya Muhammad Rizqi');
+}
+
 module.exports = {
   getAll,
   getByNim,
@@ -103,4 +107,5 @@ module.exports = {
   updateByParams,
   updateByQuery,
   deletByNim,
+  getNama
 };

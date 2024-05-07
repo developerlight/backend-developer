@@ -7,6 +7,7 @@ const {
   updateByParams,
   updateByQuery,
   deletByNim,
+  getNama
 } = require("../controllers/controller.js");
 const cacheMiddleware = require("../middlewares/caching.js");
 
@@ -21,5 +22,7 @@ route.put("/update/:nim", updateByParams);
 route.put("/update", updateByQuery);
 
 route.delete("/delete/:nim", deletByNim);
+
+route.get('/nama', getNama)
 
 module.exports = route;
